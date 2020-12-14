@@ -1,0 +1,72 @@
+{
+  "Modules": [
+    "Core", "Auth", "App", "Admin", "Api",
+    "User", "Product", "Blog"
+  ],
+
+  "Mappings": {
+
+    "Models": {
+      "Core": ["Settings"],
+      "User": ["User"],
+      "Auth": ["Verifications", "EmailReset"],
+      "Product": ["Product", "Tag"],
+      "Blog": ["Post", "Comment"]
+    },
+
+    "Policies": {},
+
+    "Controllers": {
+      "Admin": {
+        "Admin": ["Dashboard", "Home"]
+      },
+      "Api": { },
+      "App": {
+        "App": ["Home"]
+      }
+    },
+
+    "Middlewares": {},
+
+    "Requests": {
+      "Core": ["BaseFormRequest"]
+    },
+
+    "Resources": {},
+
+    "Services": {
+      "Base": { },
+      "Admin": {
+        "Admin": ["Dashboard"]
+      },
+      "App": { },
+      "Shared": "Core"
+    },
+
+    "ViewComposers": { },
+
+    "Commands": {},
+
+    "Routes": {},
+
+    "Database": {
+      "Factories": { },
+      "Seeders": { },
+      "Migrations": {
+        "User": [
+          "2020_01_01_000001_create_users_table.php"
+        ],
+        "Auth": [
+          "2020_01_01_000001_create_email_resets_table.php",
+          "2020_01_01_000001_create_verifications_table.php"
+        ],
+        "Module": [
+          "migration name",
+          "include rest of modules and their migrations like above ..."
+        ]
+      }
+    }
+
+  }
+
+}

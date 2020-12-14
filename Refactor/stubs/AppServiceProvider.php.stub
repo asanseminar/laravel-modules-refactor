@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        // CAVEAT! Please read README.md about moving User model
+
+        // IMPORTANT!
+        // We switched to use Modules architecture instead of Laravel's default.
+        // We had to move Models to their own Module folder while we had already man
+        // If you don't map this morph, previously stored roles will not be used anymore
+        Relation::morphMap([
+            'App\Models\User' => 'Modules\User\Entities\User',
+        ]);
+    }
+}
